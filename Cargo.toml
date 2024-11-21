@@ -1,0 +1,9 @@
+[package]
+name = "ebuangl"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+reqwest = "0.12.9"
+fastrand = "2.2.0"
+tokio = { version = "1.41.1", features = ['rt-multi-thread', 'rt', 'macros'] }
