@@ -32,7 +32,13 @@ impl Ebatel {
             let ind = fastrand::usize(0..self.urls.len());
             let url = self.urls[ind].clone();
             match self.client.get(url).send().await {
-                Ok(_) => println!("req was sended"),
+                Ok(res) => {
+                    if res.status() == 200 {
+                        println!("req was sended");
+                    } else if res.status() == 502 || res.status() == 500 {
+                        println!("server was fucked down");
+                    }
+                }
                 Err(_) => { /* println!("err: {err}") */ }
             }
         }
